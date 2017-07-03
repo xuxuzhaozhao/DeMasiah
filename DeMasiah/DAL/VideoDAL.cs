@@ -46,7 +46,7 @@ namespace DeMasiah.DAL
         /// <returns></returns>
         public int AddSort(int id)
         {
-            using(var db=new Models.XXDbContext())
+            using (var db = new Models.XXDbContext())
             {
                 var model = db.VideoTypes.Where(t => t.Id == id).Select(t => t).SingleOrDefault();
                 model.Sort = model.Sort + 1;
@@ -61,7 +61,7 @@ namespace DeMasiah.DAL
         /// <returns></returns>
         public List<Models.VideoType> GetVideoTypes()
         {
-            using(var db=new Models.XXDbContext())
+            using (var db = new Models.XXDbContext())
             {
                 var list = from a in db.VideoTypes
                            orderby a.Sort descending
@@ -77,7 +77,7 @@ namespace DeMasiah.DAL
         /// <returns></returns>
         public List<Models.Video> GetVideoList(int type)
         {
-            using(var db =new Models.XXDbContext())
+            using (var db = new Models.XXDbContext())
             {
                 var list = from v in db.Videos
                            where v.IsDelete == false && v.Type == type
@@ -92,13 +92,14 @@ namespace DeMasiah.DAL
             using (var db = new Models.XXDbContext())
             {
                 var l = from a in db.VideoTypes
-                           orderby a.Sort descending
-                           select new Models.VideosVm()
-                           {
-                               Id = a.Id,
-                               name = a.Name
-                           };
-                var list = GetMore(l.ToList(),db);
+                        orderby a.Sort descending
+                        select new Models.VideosVm()
+                        {
+                            Id = a.Id,
+                            name = a.Name
+                        };
+                var ll = l.ToList();
+                var list = GetMore(l.ToList(), db);
                 return list;
             }
         }
@@ -109,7 +110,7 @@ namespace DeMasiah.DAL
             foreach (var l in list)
             {
                 var tmp = (from v in db.Videos
-                           where v.Type == v.Type && v.IsDelete == false
+                           where v.Type == l.Id && v.IsDelete == false
                            select new Models.VideoVm()
                            {
                                Id = v.Id,
@@ -125,9 +126,9 @@ namespace DeMasiah.DAL
         #endregion
 
         #region Video的CRUD
-        public int AddVideo(Models.Video model,string url)
+        public int AddVideo(Models.Video model, string url)
         {
-            using(var db=new Models.XXDbContext())
+            using (var db = new Models.XXDbContext())
             {
                 db.Videos.Add(model);
                 db.SaveChanges();
@@ -141,7 +142,7 @@ namespace DeMasiah.DAL
         }
         public int ModifiedVideo(Models.Video model)
         {
-            using(var db=new Models.XXDbContext())
+            using (var db = new Models.XXDbContext())
             {
                 db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 return db.SaveChanges();
@@ -149,7 +150,7 @@ namespace DeMasiah.DAL
         }
         public int DeleteVideo(int id)
         {
-            using(var db=new Models.XXDbContext())
+            using (var db = new Models.XXDbContext())
             {
                 var model = db.Videos.Where(t => t.Id == id).Select(t => t).SingleOrDefault();
                 model.IsDelete = true;
@@ -161,7 +162,7 @@ namespace DeMasiah.DAL
 
         public Models.VideoVm GetVideoById(int id)
         {
-            using(var db=new Models.XXDbContext())
+            using (var db = new Models.XXDbContext())
             {
                 var model = db.Videos.Where(t => t.Id == id).Select(t => t).SingleOrDefault();
                 var video = new VideoVm()
