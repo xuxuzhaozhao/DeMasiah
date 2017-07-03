@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeMasiah", "DeMasiah\DeMasiah.csproj", "{3B1739CD-CFC6-45B6-A8EB-3889073F1483}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "二维码测试", "二维码测试\二维码测试.csproj", "{E83501C1-5040-40A4-B2B4-210D138A616B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B1739CD-CFC6-45B6-A8EB-3889073F1483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B1739CD-CFC6-45B6-A8EB-3889073F1483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B1739CD-CFC6-45B6-A8EB-3889073F1483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B1739CD-CFC6-45B6-A8EB-3889073F1483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E83501C1-5040-40A4-B2B4-210D138A616B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E83501C1-5040-40A4-B2B4-210D138A616B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E83501C1-5040-40A4-B2B4-210D138A616B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E83501C1-5040-40A4-B2B4-210D138A616B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

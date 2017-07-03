@@ -1,0 +1,88 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Video.js 5.18.4</title>
+    <link href="~/Content/video-js.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/video.min.js"></script>
+    <!-- If you'd like to support IE8 -->
+    <script src="~/Scripts/videojs-ie8.min.js"></script>
+    <style>
+        body {
+            background-color: #191919
+        }
+        .m {
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+        }
+        .videoLabel {
+            color: wheat;
+            font-size: 40px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function go() {
+                function hei() {
+                    var hei = 0;
+                    if (window.innerWidth) wid = window.innerWidth;
+                    else if ((document.body) && (document.body.clientWidth)) wid = document.body.clientWidth;
+                    if (window.innerHeight) hei = window.innerHeight;
+                    else if ((document.body) && (document.body.clientHeight)) hei = document.body.clientHeight;
+                    if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth) {
+                        hei = document.documentElement.clientHeight;
+                        wid = document.documentElement.clientWidth;
+                    }
+                    if (hei > wid) {
+                        $("#my-video").css("height", wid * 0.75 + "px");
+                        $("#my-video").css("width", wid + "px");
+                        $(".vjs-tech").css("width", "100%");
+                        $(".vjs-tech").css("height", "100%");
+
+                    } else {
+                        $(".vjs-tech").css("width", "100%");
+                        $(".vjs-tech").css("height", "100%");
+                        $("#my-video").css("height", wid * 0.6 * 0.75 + "px");
+                        $("#my-video").css("width", wid * 0.8 + "px");
+                    }
+                }
+                hei();
+                $(window).resize(function () {
+                    hei();
+                });
+            }
+            go();
+        });
+
+    </script>
+
+</head>
+
+<body>
+<div class="m">
+    <h3 class="videoLabel">@ViewBag.Name</h3>
+    <video id="my-video" class="video-js" controls preload="auto" width="100%" height="100%"
+           poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+        <source src="@ViewBag.Url" type="video/mp4">
+    </video>
+    <script type="text/javascript">
+        var myPlayer = videojs('my-video');
+        videojs("my-video")
+            .ready(function() {
+                var myPlayer = this;
+                myPlayer.play();
+            });
+    </script>
+</div>
+
+</body>
+</html>

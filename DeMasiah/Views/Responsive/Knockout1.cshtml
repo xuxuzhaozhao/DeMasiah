@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Knockout1</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/knockout-3.4.2.js"></script>
+</head>
+<body>
+    <div> 
+        <p>
+            The name is <span data-bind="text: viewModel.personName()"></span>.
+        </p>
+        <button id="btn" type="button">改变</button>
+    </div>
+
+    <script>
+        var viewModel = {
+            personName: ko.observable('xuxuzhaozhao'),
+            personAge: ko.observable(24)
+        };
+
+        ko.applyBindings(viewModel);
+
+        $(function () {
+            $('#btn').click(function () {
+
+            });
+        });
+    </script>
+</body>
+</html>

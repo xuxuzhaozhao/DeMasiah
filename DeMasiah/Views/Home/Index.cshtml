@@ -1,0 +1,280 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>科立达</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--[if lte IE 8]><link rel="stylesheet" href="../../responsive-nav.css"><![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link href="~/Scripts/responsive/styles.css" rel="stylesheet" />
+    <script src="~/Scripts/responsive/responsive-nav.js"></script>
+
+
+    <link href="~/Content/video-js.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/video.min.js"></script>
+    <!-- If you'd like to support IE8 -->
+    <script src="~/Scripts/videojs-ie8.min.js"></script>
+    <link href="~/Content/normalize.css" rel="stylesheet" />
+    <link href="~/Content/default.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #191919
+        }
+
+        /*.play {
+            width: 100px;
+            height: 75px;
+            margin-right: 15px;
+        }*/
+
+        .container {
+            position: relative;
+        }
+
+        .ImgBody {
+            position: absolute;
+            left: 100px;
+            top: 50px;
+        }
+
+        .m {
+            position: absolute;
+            top: 50%;
+            left: 55%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .qrcode {
+            top: 69%;
+            left: 17%;
+            position: absolute;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        #qrcode {
+            margin-left: 15px;
+            width: 150px;
+        }
+
+        .footer {
+            position: absolute;
+            top: 96%;
+            width: 70%;
+            left: 50%;
+            text-align: center;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .phone {
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            font-size: small;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .vjs-tech {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function go() {
+                function hei() {
+                    var hei = 0;
+                    if (window.innerWidth) wid = window.innerWidth;
+                    else if ((document.body) && (document.body.clientWidth)) wid = document.body.clientWidth;
+                    if (window.innerHeight) hei = window.innerHeight;
+                    else if ((document.body) && (document.body.clientHeight)) hei = document.body.clientHeight;
+                    if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth) {
+                        hei = document.documentElement.clientHeight;
+                        wid = document.documentElement.clientWidth;
+                    }
+                    if (hei > wid) {
+                        $("#my-video").css("height", wid * 0.9 * 0.75 + "px");
+                        $("#my-video").css("width", wid * 0.9 + "px");
+                        $(".main").css("height", hei * 0.965 + "px");
+                        $(".m").css("top", "46%");
+                        $(".phone").html("").append(" 点击右上角查看更多视频");
+                        $(".vjs-tech").css("width", "100%");
+                        $(".vjs-tech").css("height", "100%");
+                        $(".videoLabel").css("margin-top", "23%");
+                    } else {
+                        $(".vjs-tech").css("width", "100%");
+                        $(".vjs-tech").css("height", "100%");
+                        $(".phone").html("");
+                        $(".videoLabel").css("margin-top", "auto");
+                        $("#my-video").css("height", wid * 0.5 * 0.65 + "px");
+                        $("#my-video").css("width", wid * 0.5 + "px");
+                        $(".main").css("height", hei * 0.97 + "px");
+                    }
+                }
+                hei();
+                $(window).resize(function () {
+                    hei();
+                });
+            }
+            go();
+        });
+
+    </script>
+
+
+
+</head>
+<body>
+    <div role="navigation" id="foo" class="nav-collapse">
+        <ul class="mainmenu"></ul>
+
+    </div>
+    <div role="main" class="main">
+        <a href="#nav" class="nav-toggle">Menu</a>
+        <h3 class="videoLabel">四川科立达智能系统装备制造有限公司</h3>
+        <div class="glyphicon-qrcode qrcode">
+            <img id="qrcode" src="/Upload/20172701092718992.jpg" />
+            <p>扫描二维码在手机端观看</p>
+        </div>
+        <div class="m">
+            <h2 class="glyphicon-align-center"><label style="color: white">KOLIDA</label></h2>
+            <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto"
+                   poster="~/Content/2.jpg" data-setup="{}">
+                <source id="so" src="" type="video/mp4">
+            </video>
+        </div>
+        <div class="phone">
+        </div>
+        <div class="footer">
+            四川科立达智能系统装备制造有限公司 © 版权所有！
+        </div>
+    </div>
+
+    <script>
+        var navigation = responsiveNav("foo", { customToggle: ".nav-toggle" });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var $submenu = $('.submenu');//<ul class="submenu">
+            var $mainmenu = $('.mainmenu');//<ul class="mainmenu">
+            $submenu.hide();//所有的都不伸展
+            /*
+            delay()对被选元素的所有排队函数（仍未运行）设置延迟
+            slideDown() 方法以滑动方式显示被选元素。
+            注意：slideDown() 适用于通过 jQuery 方法隐藏的元素，或在 CSS 中声明 display:none 隐藏的元素（不适用于通过 visibility:hidden 隐藏的元素）。
+            提示：如需以滑动方式隐藏元素，请查看 slideUp() 方法。
+            */
+            $submenu.first().delay(400).slideDown(700);
+            //点击Basics、Picture等左侧变颜色
+            $submenu.on('click', 'li', function () {
+                /*
+                siblings() 方法返回被选元素的所有同级元素。
+                同级元素是共享相同父元素的元素。
+                */
+                $submenu.siblings().find('li').removeClass('chosen');
+                $(this).addClass('chosen');
+            });
+            //点击Account、Messages等展开子元素
+            /*
+            next() 方法返回被选元素的后一个同级元素。
+            同级元素是共享相同父元素的元素。注意：该方法只返回一个元素。
+
+            slideToggle() 方法在被选元素上进行 slideUp() 和 slideDown() 之间的切换。
+            该方法检查被选元素的可见状态。如果一个元素是隐藏的，则运行 slideDown()，如果一个元素是可见的，则运行 slideUp() - 这会造成一种切换的效果。
+
+            slideUp() 方法以滑动方式隐藏被选元素。
+            注意：隐藏的元素不会被完全显示（不再影响页面的布局）。
+            */
+            $mainmenu.on('click', 'li', function () {
+                $(this).next('.submenu').slideToggle().siblings('.submenu').slideUp();
+            });
+            $mainmenu.children('li:last-child').on('click', function () {
+                //$mainmenu.fadeOut().delay(500).fadeIn();
+            });
+        });
+
+        function firstLi(item) {
+            var htmlCode = "";
+            htmlCode += "<li><span>" + item.name + "</span></li>";
+            $(".mainmenu").append(htmlCode);
+        }
+        function optionss(item, num) {
+            var htmlCode = "";
+            htmlCode += '<ul style="display:none;" class="submenu">';
+            htmlCode += '<div class="expand-triangle"></div> ';
+            for (var i = 0; i < item.length; i++) {
+                htmlCode += "<li><span class='play' qrcode="+item[i].qrcodeurl+" url=" + item[i].videourl + " name=" + item[i].name + ">" + item[i].name + "</span></li>";
+            }
+            htmlCode += "</ul>";
+            $(".mainmenu").append(htmlCode);
+        }
+
+        $.get("/api/getVideosOptions",
+            function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    firstLi(data[i]);
+                    optionss(data[i].options, i);
+                }
+                $(".mainmenu").append('<li><span>KOLIDA</span></li>');
+                bindImageClick();
+            });
+        function bindImageClick() {
+            $(".play").click(function () {
+                navigation.toggle();
+                var src = $(this).attr("url");
+
+                //获取该视频的二维码
+                var qrcode = $(this).attr("qrcode");
+                $("#qrcode").attr("src", qrcode);
+
+                var name = $(this).attr("name");
+                $(".videoLabel").html("");
+                $(".videoLabel").append(name);
+
+                var myPlayer = videojs('my-video');
+                videojs("my-video")
+                    .ready(function () {
+                        var myPlayer = this;
+                        myPlayer.src(src);
+                        myPlayer.load(src);
+                        //myPlayer.play();
+                    });
+            });
+        }
+    </script>
+    //
+    @*<script type="text/javascript">
+            var x = true;
+            $(".vjs-fullscreen-control").click(function () {
+                x = false;
+            });
+            if (x) {
+                window.onresize = function () {
+                    location.reload();
+                }
+            }
+        </script>*@
+</body>
+</html>
